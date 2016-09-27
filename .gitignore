@@ -18,8 +18,7 @@ tmp/
 .classpath
 
 # Toast/GradleRIO
-run/
-!run/toast/config
+/run/*
 .gradle/
 gradle/.launch/
 
