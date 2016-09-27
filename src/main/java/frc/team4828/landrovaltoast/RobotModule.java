@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Victor;
 import jaci.openrio.toast.core.StateTracker;
 import jaci.openrio.toast.core.command.CommandBus;
+import jaci.openrio.toast.core.io.Storage;
 import jaci.openrio.toast.core.thread.Heartbeat;
 import jaci.openrio.toast.core.thread.HeartbeatListener;
 import jaci.openrio.toast.lib.log.Logger;
@@ -12,6 +13,8 @@ import jaci.openrio.toast.lib.module.IterativeModule;
 import jaci.openrio.toast.lib.module.ModuleConfig;
 import jaci.openrio.toast.lib.registry.Registrar;
 import jaci.openrio.toast.lib.state.RobotState;
+
+import java.io.File;
 
 public class RobotModule extends IterativeModule {
 
@@ -53,9 +56,19 @@ public class RobotModule extends IterativeModule {
         autonChoice = Auton.valueOf(config.getString("autonomousDefault","TERRAIN"));
 
         //TODO: USB Implementation
+        // Jackie: These are my tests with USB, doesn't work yet. Comment out if spits out errors.
+        File usbFile = Storage.highestPriority("TestConf.conf");
+        ModuleConfig usbConfig = new ModuleConfig(usbFile);
+        logger.info("Hi! My name is " + usbConfig.getObject("filename"));
+
         //TODO: command bus (the possibilities are endless)
+        // Commands
+        CommandBus.registerCommand(new TestCommand.MyCommand());
+
         //TODO: state tracker (working, no use yet)
-        //TODO: mess with heartbeats (working, use for prints like camera pos)
+
+        // Heartbeat
+        // Heartbeat.add(skipped -> RobotModule.logger.info("Beep"));
 
         refreshConstants();
         refreshPorts();
