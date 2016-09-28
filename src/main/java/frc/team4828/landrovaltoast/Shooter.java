@@ -19,6 +19,13 @@ public class Shooter {
         centerHall = Registrar.digitalInput(ch);
         servo1 = new Servo(s1);
         servo2 = new Servo(s2);
+        refreshPID();
+    }
+
+    public void refreshPID() {
+        verticalMotor.setP(RobotModule.config.getDouble("constants.shooter.P", 0.0));
+        verticalMotor.setI(RobotModule.config.getDouble("constants.shooter.I", 0.0));
+        verticalMotor.setD(RobotModule.config.getDouble("constants.shooter.D", 0.0));
     }
 
 }
