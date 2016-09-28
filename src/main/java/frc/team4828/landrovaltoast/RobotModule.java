@@ -57,9 +57,9 @@ public class RobotModule extends IterativeModule {
 
         //TODO: USB Implementation
         // Jackie: These are my tests with USB, doesn't work yet. Comment out if spits out errors.
-        File usbFile = Storage.highestPriority("TestConf.conf");
-        ModuleConfig usbConfig = new ModuleConfig(usbFile);
-        logger.info("Hi! My name is " + usbConfig.getObject("filename"));
+//        File usbFile = Storage.highestPriority("TestConf.conf");
+//        ModuleConfig usbConfig = new ModuleConfig(usbFile);
+//        logger.info("Hi! My name is " + usbConfig.getObject("filename"));
 
         //TODO: command bus (the possibilities are endless)
         // Commands
