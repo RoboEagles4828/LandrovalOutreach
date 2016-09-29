@@ -2,6 +2,7 @@ package frc.team4828.landrovaltoast;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.Victor;
 import jaci.openrio.toast.core.command.CommandBus;
 import jaci.openrio.toast.lib.log.Logger;
@@ -76,7 +77,7 @@ public class RobotModule extends IterativeModule {
 
 
     @Override
-    public void teleopPeriodic() {
+    public void teleopPeriodic(){
 
     }
 

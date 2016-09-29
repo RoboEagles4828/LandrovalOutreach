@@ -10,9 +10,9 @@ public class Climber {
 
     public Climber(int lm, int rm, int la, int ra){
         leftMain = Registrar.canTalon(lm);
-        leftMain = Registrar.canTalon(rm);
-        leftMain = Registrar.canTalon(la);
-        leftMain = Registrar.canTalon(ra);
+        rightMain = Registrar.canTalon(rm);
+        leftAlt = Registrar.victor(la);
+        rightAlt = Registrar.victor(ra);
     }
 
 }
