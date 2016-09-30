@@ -2,15 +2,12 @@ package frc.team4828.landrovaltoast;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.Victor;
 import jaci.openrio.toast.core.command.CommandBus;
 import jaci.openrio.toast.lib.log.Logger;
 import jaci.openrio.toast.lib.module.IterativeModule;
 import jaci.openrio.toast.lib.module.ModuleConfig;
 import jaci.openrio.toast.lib.registry.Registrar;
-
-import java.io.File;
 
 public class RobotModule extends IterativeModule {
 
@@ -50,7 +47,7 @@ public class RobotModule extends IterativeModule {
         autonChoice = Auton.valueOf(config.getString("autonomousDefault", "TERRAIN"));
 
         //TODO: command bus (the possibilities are endless)
-        CommandBus.registerCommand(new TestCommand.MyCommand());
+        CommandBus.registerCommand(new Commands.MyCommand());
 
         blocker = Registrar.victor(config.getInt("ports.blockerMotor", 0));
         blockerHall = Registrar.digitalInput(config.getInt("ports.blockerHall", 0));

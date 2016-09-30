@@ -59,6 +59,7 @@ public class Shooter {
         horizontalMotor.setP(RobotModule.config.getDouble("constants.shooter.horizontal.P", 0.0));
         horizontalMotor.setI(RobotModule.config.getDouble("constants.shooter.horizontal.I", 0.0));
         horizontalMotor.setD(RobotModule.config.getDouble("constants.shooter.horizontal.D", 0.0));
+        //motor.setF();
     }
 
     public void refreshEncoder() {
