@@ -35,7 +35,7 @@ public class Loader {
         verticalMotor.set(verticalMotor.getPosition() + speed * maxFlipSpeed);
     }
 
-    public void setPos(int pos) {
+    public void setPosition(int pos) {
         verticalMotor.set(pos);
     }
 

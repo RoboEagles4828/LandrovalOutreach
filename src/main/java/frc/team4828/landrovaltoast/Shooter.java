@@ -14,7 +14,7 @@ public class Shooter {
     private double spinUpDelay, maxRotationSpeed, maxFlipSpeed;
     private double servo1Max, servo2Min, servo2Max, servo1Min;
 
-    public Shooter(int vm, int hm, int mm, int sm, int ch, int s1, int s2) {
+    public Shooter(int vm, int hm, int mm, int sm, int s1, int s2) {
         verticalMotor = Registrar.canTalon(vm);
         horizontalMotor = Registrar.canTalon(hm);
         masterMotor = Registrar.canTalon(mm);
@@ -49,7 +49,6 @@ public class Shooter {
         // TODO: add command bus option to re-zero so we don't have to power cycle
         // TODO: designate command bus conventions for debugging for all classes
         refreshPID();
-        //TODO: tune feed-forward in addition to PID values for proper vertical control
     }
 
     public void refreshPID() {
@@ -59,6 +58,7 @@ public class Shooter {
         horizontalMotor.setP(RobotModule.config.getDouble("constants.shooter.horizontal.P", 0.0));
         horizontalMotor.setI(RobotModule.config.getDouble("constants.shooter.horizontal.I", 0.0));
         horizontalMotor.setD(RobotModule.config.getDouble("constants.shooter.horizontal.D", 0.0));
+        //TODO: tune feed-forward in addition to PID values for proper vertical control
         //motor.setF();
     }
 
@@ -71,8 +71,16 @@ public class Shooter {
         horizontalMotor.set(horizontalMotor.getPosition()+speed*maxRotationSpeed);
     }
 
+    public void setRotation(int pos){
+        horizontalMotor.set(pos);
+    }
+
     public void flip(double speed){
         verticalMotor.set(verticalMotor.getPosition()+speed*maxFlipSpeed);
+    }
+
+    public void setPosition(int pos){
+        horizontalMotor.set(pos);
     }
 
     public void setSpeed(double speed){
