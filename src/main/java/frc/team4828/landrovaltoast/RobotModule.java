@@ -8,6 +8,7 @@ import jaci.openrio.toast.core.command.CommandBus;
 import jaci.openrio.toast.lib.log.Logger;
 import jaci.openrio.toast.lib.module.IterativeModule;
 import jaci.openrio.toast.lib.module.ModuleConfig;
+import jaci.openrio.toast.lib.registry.Registrar;
 
 import java.io.File;
 
@@ -15,7 +16,7 @@ public class RobotModule extends IterativeModule {
 
     @Override
     public String getModuleName() {
-        return "LandrovalToast";
+        return "Landroval";
     }
 
     @Override
@@ -34,11 +35,9 @@ public class RobotModule extends IterativeModule {
     private DigitalInput blockerHall;
 
     private enum Auton {SPYBOT, TERRAIN, LOWBAR;}
+
     private Auton autonChoice;
 
-    public void refreshPorts() {
-        //TODO: find a way to reset registrar so we can rebind ports through code/config file/command bus
-    }
 
     public void refreshConstants() {
 
@@ -48,19 +47,19 @@ public class RobotModule extends IterativeModule {
     public void robotInit() {
         logger = new Logger("Landroval", Logger.ATTR_DEFAULT);
         config = new ModuleConfig("RobotConfig.conf");
-        autonChoice = Auton.valueOf(config.getString("autonomousDefault","TERRAIN"));
+        autonChoice = Auton.valueOf(config.getString("autonomousDefault", "TERRAIN"));
 
         //TODO: command bus (the possibilities are endless)
-        // Commands
         CommandBus.registerCommand(new TestCommand.MyCommand());
 
+        blocker = Registrar.victor(config.getInt("ports.blockerMotor", 0));
+        blockerHall = Registrar.digitalInput(config.getInt("ports.blockerHall", 0));
         refreshConstants();
-        refreshPorts();
     }
 
     @Override
     public void autonomousPeriodic() {
-        switch(autonChoice) {
+        switch (autonChoice) {
             case LOWBAR:
                 //TODO: add legacy lowbar auton from when we didn't have blocker
                 break;
@@ -68,7 +67,7 @@ public class RobotModule extends IterativeModule {
                 //TODO: add autohack
                 break;
             case SPYBOT:
-                //shooter.shoot(getautonshotpowerfromconfig);
+                shooter.shoot(config.getDouble("autonShootSpeed", 0));
                 break;
             default:
                 break;
@@ -77,7 +76,7 @@ public class RobotModule extends IterativeModule {
 
 
     @Override
-    public void teleopPeriodic(){
+    public void teleopPeriodic() {
 
     }
 

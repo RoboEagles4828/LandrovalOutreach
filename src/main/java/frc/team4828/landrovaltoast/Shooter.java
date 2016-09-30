@@ -12,7 +12,7 @@ public class Shooter {
     private Servo servo1, servo2;
 
     private double spinUpDelay, maxRotationSpeed, maxFlipSpeed;
-    private double servo1Max, servo1Min, servo2Max, servo2Min;
+    private double servo1Max, servo2Min, servo2Max, servo1Min;
 
     public Shooter(int vm, int hm, int mm, int sm, int ch, int s1, int s2) {
         verticalMotor = Registrar.canTalon(vm);
@@ -28,26 +28,28 @@ public class Shooter {
         servo1Max = RobotModule.config.getDouble("constants.shooter.servo.1.max",0);
         servo1Min = RobotModule.config.getDouble("constants.shooter.servo.1.min",0);
         servo2Max = RobotModule.config.getDouble("constants.shooter.servo.2.max",0);
-        servo1Min = RobotModule.config.getDouble("constants.shooter.servo.2.min",0);
+        servo2Min = RobotModule.config.getDouble("constants.shooter.servo.2.min",0);
 
-        //not sure if we need motor.enableControl();
         slaveMotor.changeControlMode(CANTalon.TalonControlMode.Follower);
         slaveMotor.set(masterMotor.getDeviceID());
         slaveMotor.reverseOutput(true);
         horizontalMotor.changeControlMode(CANTalon.TalonControlMode.Position);
         horizontalMotor.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder); // TODO: check if we even have an encoder on that motor
+        horizontalMotor.enableForwardSoftLimit(true);
+        horizontalMotor.enableReverseSoftLimit(true);
+        horizontalMotor.setForwardSoftLimit(RobotModule.config.getInt("constants.shooter.horizontal.maxPos",0));
+        horizontalMotor.setReverseSoftLimit(RobotModule.config.getInt("constants.shooter.horizontal.minPos",0));
         verticalMotor.changeControlMode(CANTalon.TalonControlMode.Position);
         verticalMotor.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder); // TODO: verify the type of encoder we have
+        verticalMotor.enableForwardSoftLimit(true);
+        verticalMotor.enableReverseSoftLimit(true);
+        verticalMotor.setForwardSoftLimit(RobotModule.config.getInt("constants.shooter.vertical.maxPos",0));
+        verticalMotor.setReverseSoftLimit(RobotModule.config.getInt("constants.shooter.vertical.minPos",0));
         refreshEncoder();  //Zeros the encoder position
         // TODO: add command bus option to re-zero so we don't have to power cycle
         // TODO: designate command bus conventions for debugging for all classes
         refreshPID();
-        /*
-        * soft limits can be easily set with:
-        * enableForwardSoftLimit(true), enableReverseSoftLimit(true)
-        * setForwardSoftLimit(int pos), setReverseSoftLimit(int pos)
-        * */
-        //TODO: use these for horizontal rotation limits
+        //TODO: tune feed-forward in addition to PID values for proper vertical control
     }
 
     public void refreshPID() {
