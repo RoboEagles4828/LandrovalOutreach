@@ -42,7 +42,15 @@ public class RobotModule extends IterativeModule {
     private Auton autonChoice;
 
     public void refreshPorts() {
+
         //TODO: find a way to reset registrar so we can rebind ports through code/config file/command bus
+        /*
+        Jackie: this could be one way to do it, however tedious:
+        First, make motors (Talon myTalon;)
+        Then:
+        talon = Registrar.talon(myConfigFile.getString("port/talon1","9000"));
+        Repeat for each or use a for loop on an array (Can you do that in java? You can in Python)
+        */
     }
 
     public void refreshConstants() {
@@ -57,9 +65,11 @@ public class RobotModule extends IterativeModule {
 
         //TODO: USB Implementation
         // Jackie: These are my tests with USB, doesn't work yet. Comment out if spits out errors.
-        File usbFile = Storage.highestPriority("TestConf.conf");
-        ModuleConfig usbConfig = new ModuleConfig(usbFile);
-        logger.info("Hi! My name is " + usbConfig.getObject("filename"));
+        Storage.highestPriority("TestConf.conf");
+
+//        File usbFile = Storage.("TestConf.conf");
+//        ModuleConfig usbConfig = new ModuleConfig(usbFile);
+//        logger.info("Hi! My name is " + usbConfig.getObject("filename"));
 
         //TODO: command bus (the possibilities are endless)
         // Commands
