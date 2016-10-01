@@ -6,7 +6,7 @@ import jaci.openrio.toast.lib.log.Logger;
 
 import java.util.Objects;
 
-class TestCommand {
+class Commands {
     static class MyCommand extends AbstractCommand implements IHelpable {    // IHelpable is optional, but provides a help message
         public String getCommandName() {
             return "logtest";
