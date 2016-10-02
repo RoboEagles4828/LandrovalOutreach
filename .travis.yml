@@ -9,12 +9,6 @@ addons:
 
 install:
 - "./gradlew build"
-- "./gradlew generateExternalPatches"
-- "./gradlew build"
-- "./gradlew genMetrics"
-- ruby tools/setup.rb
-- ruby tools/inspector.rb
-- ruby tools/imports.rb
 - "./gradlew verify"
 jdk:
 - oraclejdk8
