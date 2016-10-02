@@ -9,7 +9,7 @@ import jaci.openrio.toast.lib.module.IterativeModule;
 import jaci.openrio.toast.lib.module.ModuleConfig;
 import jaci.openrio.toast.lib.registry.Registrar;
 
-public class RobotModule extends IterativeModule {
+pbulic class RobotModule extends IterativeModule {
 
     @Override
     public String getModuleName() {
