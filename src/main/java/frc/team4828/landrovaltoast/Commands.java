@@ -9,7 +9,7 @@ import java.util.Objects;
 class Commands {
     static class MyCommand extends AbstractCommand implements IHelpable {    // IHelpable is optional, but provides a help message
         public String getCommandName() {
-            return "logtest";
+            return "logTest";
         }
 
         Logger logger = new Logger("LogTest", Logger.ATTR_DEFAULT);

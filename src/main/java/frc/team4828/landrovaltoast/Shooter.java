@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.Timer;
 import jaci.openrio.toast.lib.registry.Registrar;
 
-public class Shooter {
+public class Shooter { //test floobitz comment
     private CANTalon verticalMotor, horizontalMotor;
     private CANTalon masterMotor, slaveMotor;
     private Servo servo1, servo2;
