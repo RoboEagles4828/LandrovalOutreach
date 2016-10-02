@@ -1,7 +1,6 @@
 language: java
 
 install:
-  - "./gradlew wpi"
   - "./gradlew build"
 
 script:
