@@ -1,0 +1,10 @@
+skip_tags: true
+
+install:
+- "gradlew.bat build"
+
+build_script:
+- "gradlew.bat verify"
+
+artifacts:
+- path: build\libs\*.*
