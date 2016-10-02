@@ -1,0 +1,22 @@
+language: java
+# Make NetworkTables happy
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - libstdc++6
+
+install:
+- "./gradlew build"
+- "./gradlew verify"
+jdk:
+- oraclejdk8
+notifications:
+  email: false
+  slack: 4828roboeagles:qjpsMMedvSTKBq3KCmDmdAjB
+cards:
+  enabled:
+  - master
+  - development
+  title: Toast
