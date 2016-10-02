@@ -17,6 +17,10 @@ tmp/
 /.idea
 .classpath
 
+#Floobits
+.floo
+.flooignore
+
 # Toast/GradleRIO
 run/toast/*
 run/gradle
