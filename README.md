@@ -1,5 +1,6 @@
 # **Landroval-Toast**
 Rewrite of our 2016 robot's code using the [Toast API](https://github.com/Open-RIO/ToastAPI)
+![Safety Status](https://img.shields.io/badge/Safety-Always-blue.svg)
 
 ## Builds
 | Branch        | Travis        | Appveyor  |
