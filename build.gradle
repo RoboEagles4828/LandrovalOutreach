@@ -13,7 +13,7 @@ buildscript {
   }
   dependencies {
     classpath group: 'jaci.openrio.gradle', name: 'GradleRIO', version: '+', classifier: 'Toast'			//Change this line if you wish to Update GradleRIO
-    testCompile 'junit:junit:4.12'
+    testCompile 'junit:junit'
   }
 }
 
