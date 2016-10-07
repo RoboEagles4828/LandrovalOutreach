@@ -37,3 +37,9 @@ dependencies {
   compile group: 'jaci.openrio.toast', name: 'Toast', version: '+'    //Change this line to update Toast
   testCompile 'junit:junit:4.12'
 }
+test {
+  testLogging {
+    // Show that tests are run in the command-line output
+    events 'started', 'passed'
+  }
+}
