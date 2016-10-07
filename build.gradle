@@ -12,8 +12,7 @@ buildscript {
   }
   }
   dependencies {
-    classpath group: 'jaci.openrio.gradle', name: 'GradleRIO', version: '+', classifier: 'Toast'			//Change this line if you wish to Update GradleRIO
-    testCompile 'junit:junit'
+    classpath group: 'jaci.openrio.gradle', name: 'GradleRIO', version: '+', classifier: 'Toast'			//Change this line if you wish to Update GradleRI
   }
 }
 
@@ -36,4 +35,5 @@ gradlerio.deployFile = "toast/modules/${archivesBaseName}.jar"
 
 dependencies {
   compile group: 'jaci.openrio.toast', name: 'Toast', version: '+'    //Change this line to update Toast
+  testCompile 'junit:junit:4.12'
 }
