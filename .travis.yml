@@ -6,9 +6,11 @@ addons:
       - ubuntu-toolchain-r-test
     packages:
       - libstdc++6
+      - junit4
 
 install:
 - "./gradlew build"
+- "./gradlew test"
 - "./gradlew verify"
 jdk:
 - oraclejdk8
