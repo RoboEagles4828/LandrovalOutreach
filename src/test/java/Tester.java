@@ -7,6 +7,8 @@ import java.util.logging.Logger;
 
 import java.util.logging.Logger;
 
+import java.util.logging.Logger;
+
 import static org.junit.Assert.assertEquals;
 
 /**
