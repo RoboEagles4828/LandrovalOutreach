@@ -8,10 +8,12 @@ addons:
       - libstdc++6
       - junit4
 
-install:
-- "./gradlew build"
-- "./gradlew test"
-- "./gradlew verify"
+install: ./gradlew build
+script: ./gradlew $TEST_SUITE
+
+# For CodeCov
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
 jdk:
 - oraclejdk8
 notifications:
@@ -22,3 +24,6 @@ cards:
   - master
   - development
   title: Toast
+env:
+  - TEST_SUITE=test
+  - TEST_SUITE=verify

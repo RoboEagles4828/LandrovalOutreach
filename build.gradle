@@ -21,6 +21,7 @@ apply plugin: 'idea'
 apply plugin: 'eclipse'
 apply plugin: 'maven'
 apply plugin: 'GradleRIO'                                 //Apply the GradleRIO plugin
+apply plugin: 'jacoco'
 
 repositories {
   maven {
@@ -44,5 +45,11 @@ test {
   testLogging {
     // Show that tests are run in the command-line output
     events 'started', 'passed'
+  }
+}
+
+jacocoTestReport {
+  reports {
+    xml.enabled true
   }
 }
