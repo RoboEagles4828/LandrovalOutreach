@@ -35,7 +35,10 @@ gradlerio.deployFile = "toast/modules/${archivesBaseName}.jar"
 
 dependencies {
   compile group: 'jaci.openrio.toast', name: 'Toast', version: '+'    //Change this line to update Toast
-  testCompile 'junit:junit:4.12'
+    testCompile('junit:junit:4.12'){
+        exclude group: 'org.hamcrest'
+    }
+    testCompile 'org.hamcrest:hamcrest-library:1.3'
 }
 test {
   testLogging {
