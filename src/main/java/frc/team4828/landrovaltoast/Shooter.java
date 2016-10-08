@@ -6,7 +6,11 @@ import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.Timer;
 import jaci.openrio.toast.lib.registry.Registrar;
 
-public class Shooter { //test floobitz comment
+/**
+ * <h1>Shooter</h1>
+ * Todo: write a concise description of what the shooter does
+ */
+public class Shooter {
     private CANTalon verticalMotor, horizontalMotor;
     private CANTalon masterMotor, slaveMotor;
     private Servo servo1, servo2;
@@ -14,6 +18,15 @@ public class Shooter { //test floobitz comment
     private double spinUpDelay, maxRotationSpeed, maxFlipSpeed;
     private double servo1Max, servo2Min, servo2Max, servo1Min;
 
+
+    /**
+     * @param vm Vertical motor CAN address
+     * @param hm Horizontal motor CAN address
+     * @param mm Main shooting motor CAN address
+     * @param sm Slave shooting motor CAN address
+     * @param s1 Pusher servo one PWM port
+     * @param s2 Pusher servo two PWM port
+     */
     public Shooter(int vm, int hm, int mm, int sm, int s1, int s2) {
         verticalMotor = Registrar.canTalon(vm);
         horizontalMotor = Registrar.canTalon(hm);
@@ -45,12 +58,16 @@ public class Shooter { //test floobitz comment
         verticalMotor.enableReverseSoftLimit(true);
         verticalMotor.setForwardSoftLimit(RobotModule.config.getInt("constants.shooter.vertical.maxPos",0));
         verticalMotor.setReverseSoftLimit(RobotModule.config.getInt("constants.shooter.vertical.minPos",0));
-        refreshEncoder();  //Zeros the encoder position
+        refreshEncoder();
         // TODO: add command bus option to re-zero so we don't have to power cycle
         // TODO: designate command bus conventions for debugging for all classes
         refreshPID();
     }
 
+    /**
+     * Pulls PID values from RobotConfig.conf
+     * (applies to both horizontal and vertical shooter motors)
+     */
     public void refreshPID() {
         verticalMotor.setP(RobotModule.config.getDouble("constants.shooter.vertical.P", 0.0));
         verticalMotor.setI(RobotModule.config.getDouble("constants.shooter.vertical.I", 0.0));
@@ -62,40 +79,75 @@ public class Shooter { //test floobitz comment
         //motor.setF();
     }
 
+    /**
+     * Zeroes the encoders on the horizontal and vertical shooter motors
+     */
     public void refreshEncoder() {
         verticalMotor.setPosition(0);
         horizontalMotor.setPosition(0);
     }
 
+    /**
+     * Turns the shooter left or right
+     * @param speed Value between -1 (max speed left) and 1 (max speed right)
+     */
     public void rotate(double speed){
         horizontalMotor.set(horizontalMotor.getPosition()+speed*maxRotationSpeed);
     }
 
+    /**
+     * Gives the horizontal motor a target position to move to
+     * @param pos Encoder position
+     */
     public void setRotation(int pos){
         horizontalMotor.set(pos);
     }
 
+    /**
+     * Flips the shooter up or down
+     * @param speed Value between -1 (max speed up) and 1 (max speed down)
+     */
     public void flip(double speed){
         verticalMotor.set(verticalMotor.getPosition()+speed*maxFlipSpeed);
     }
 
+    /**
+     * Gives the vertical motor a target position to move to
+     * @param pos Encoder position
+     */
     public void setPosition(int pos){
         horizontalMotor.set(pos);
     }
 
+    /**
+     * Spins the flywheels
+     * @param speed Value between -1 (full power intake) and 1 (full power shot)
+     */
     public void setSpeed(double speed){
         masterMotor.set(speed);
     }
 
+    /**
+     * <b>Shooting routine</b>
+     * <ol>
+     *     <li>Lock shooter's vertical position</li>
+     *     <li>Intake briefly to settle the ball</li>
+     *     <li>Spin up flywheels and wait for them to reach max speed</li>
+     *     <li>Extend tandem pusher servos and wait for them to push the ball into flywheels</li>
+     *     <li>Stop flywheels and retract pusher servos</li>
+     * </ol>
+     * @param speed Power of the shot in range [0.5,1]
+     */
     public void shoot(double speed){
-        verticalMotor.set(verticalMotor.getPosition()); //Locks the shooter's vertical position
+        verticalMotor.set(verticalMotor.getPosition());
         setSpeed(-speed);
-        Timer.delay(.15); //Intake for a short time to settle the ball
+        Timer.delay(.15);
         setSpeed(speed);
-        Timer.delay(spinUpDelay); //Time it takes for wheels to get to intended speed
+        Timer.delay(spinUpDelay);
         servo1.set(servo1Max);
         servo2.set(servo2Max);
-        Timer.delay(.75); //Time it takes for servos to fully extend
+        Timer.delay(.75);
+        setSpeed(0);
         servo1.set(servo1Min);
         servo2.set(servo2Min);
     }
