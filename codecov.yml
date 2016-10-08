@@ -1,6 +1,5 @@
 codecov:
   branch: master
-  bot: null
 
 coverage:
   precision: 2
@@ -10,29 +9,14 @@ coverage:
   notify:
     slack:
       default:
-        url: null
-        threshold: null
-        branches: null
+        url: "https://hooks.slack.com/services/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"
+        threshold: 1%
         attachments: "sunburst, diff"
   status:
-    project:
-      default:
-        target: auto
-        threshold: null
-        branches: null
-
-    patch:
-      default:
-        target: auto
-        branches: null
-
-    changes:
-      default:
-        branches: null
-
-  ignore: null
+    project: yes
+    patch: yes
+    changes: yes
 
 comment:
-  layout: "header, diff, changes, sunburst, uncovered, tree"
-  branches: null
+  layout: "header, diffu, changes, sunburst, ncovered, tree"
   behavior: default
