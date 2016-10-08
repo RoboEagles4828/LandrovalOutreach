@@ -9,16 +9,12 @@ addons:
       - junit4
 
 
-before_install:
-  - pip install --user codecov
-
 install: ./gradlew build
 script: ./gradlew $TEST_SUITE
 
 # For CodeCov
 after_success:
-  - codecov
-#  - bash <(curl -s https://codecov.io/bash)
+  - bash <(curl -s https://codecov.io/bash)
 
 jdk:
 - oraclejdk8
