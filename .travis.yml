@@ -10,8 +10,8 @@ addons:
 
 install:
 - "./gradlew build"
-- "./gradlew verify"
 - "./gradlew test"
+- "./gradlew verify"
 jdk:
 - oraclejdk8
 notifications:
