@@ -10,6 +10,10 @@ addons:
 
 install: ./gradlew build
 script: ./gradlew $TEST_SUITE
+
+# For CodeCov
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
 jdk:
 - oraclejdk8
 notifications:
