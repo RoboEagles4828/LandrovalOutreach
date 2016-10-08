@@ -3,6 +3,9 @@ package frc.team4828.landrovaltoast;
 import edu.wpi.first.wpilibj.CANTalon;
 import jaci.openrio.toast.lib.registry.Registrar;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class Drive {
     public CANTalon frontLeft;
     public CANTalon backLeft;
@@ -15,5 +18,13 @@ public class Drive {
         frontRight = Registrar.canTalon(fr);
         backRight = Registrar.canTalon(br);
     }
+    public int[] getPorts() {
+        int[] list = new int[4];
+        list[0] = frontLeft.getDeviceID();
+        list[1] = backLeft.getDeviceID();
+        list[2] = backRight.getDeviceID();
+        list[3] = frontRight.getDeviceID();
 
+        return list;
+    }
 }
