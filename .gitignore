@@ -5,6 +5,9 @@ dist/
 sysProps.xml
 workbench.xmi
 
+#java
+classes/
+
 # IDE
 *.ipr
 *.iml
