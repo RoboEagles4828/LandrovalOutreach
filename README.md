@@ -3,12 +3,16 @@ Rewrite of our 2016 robot's code using the [Toast API](https://github.com/Open-R
 ![Safety Status](https://img.shields.io/badge/Safety-Always-blue.svg)
 
 ## Coverage
-| CodeCov | Coveralls |
-|:-------:|:---------:|
-|[![codecov](https://codecov.io/gh/RoboEagles4828/LandrovalToast/branch/master/graph/badge.svg)](https://codecov.io/gh/RoboEagles4828/LandrovalToast) | Work In Progress |
+| Branch        | Coverage        | 
+|:-------------:|:-------------:|
+| master        | [![codecov](https://codecov.io/gh/RoboEagles4828/LandrovalToast/branch/master/graph/badge.svg)](https://codecov.io/gh/RoboEagles4828/LandrovalToast) |
+| collab        | [![codecov](https://codecov.io/gh/RoboEagles4828/LandrovalToast/branch/collab/graph/badge.svg)](https://codecov.io/gh/RoboEagles4828/LandrovalToast) |
+| jackie        | [![codecov](https://codecov.io/gh/RoboEagles4828/LandrovalToast/branch/jackie/graph/badge.svg)](https://codecov.io/gh/RoboEagles4828/LandrovalToast) |
+| joseph        | [![codecov](https://codecov.io/gh/RoboEagles4828/LandrovalToast/branch/joseph/graph/badge.svg)](https://codecov.io/gh/RoboEagles4828/LandrovalToast) |
+| vivek         | [![codecov](https://codecov.io/gh/RoboEagles4828/LandrovalToast/branch/vivek/graph/badge.svg)](https://codecov.io/gh/RoboEagles4828/LandrovalToast) | 
 
 ## Builds
-| Branch        | Travis        | Appveyor  |
+| Branch        | Travis        | Appveyor  | 
 |:-------------:|:-------------:|:---------:|
 | master        | [![Travis Status](https://travis-ci.org/RoboEagles4828/LandrovalToast.svg?branch=master)](https://travis-ci.org/RoboEagles4828/LandrovalToast) | [![Appveyor status](https://ci.appveyor.com/api/projects/status/ibelf4tjpksfugdm/branch/master?svg=true)](https://ci.appveyor.com/project/CheezBallzPi/landrovaltoast/branch/master) |
 | collab        | [![Travis Status](https://travis-ci.org/RoboEagles4828/LandrovalToast.svg?branch=collab)](https://travis-ci.org/RoboEagles4828/LandrovalToast) |[![Appveyor status](https://ci.appveyor.com/api/projects/status/ibelf4tjpksfugdm/branch/collab?svg=true)](https://ci.appveyor.com/project/CheezBallzPi/landrovaltoast/branch/collab) |
