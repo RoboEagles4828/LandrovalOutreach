@@ -10,8 +10,8 @@ addons:
 
 install:
 - "./gradlew build"
-- "./gradlew test"
-- "./gradlew verify"
+script:
+- "./gradlew $option"
 jdk:
 - oraclejdk8
 notifications:
@@ -22,3 +22,6 @@ cards:
   - master
   - development
   title: Toast
+env:
+  - option = test
+  - option = verify
