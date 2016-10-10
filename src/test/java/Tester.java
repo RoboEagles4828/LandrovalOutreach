@@ -18,4 +18,11 @@ public class Tester {
         int[] info = drive.getPorts();
         assertArrayEquals(expected, info);
     }
+//    @Test
+//    public void checkShooterMovement() {
+//        Shooter shoot = new Shooter(1,2,3,4,5,6);
+//        shoot.setRotation(90);
+//        int pos = shoot.
+//
+//    }
 }
