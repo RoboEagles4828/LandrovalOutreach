@@ -8,11 +8,12 @@ addons:
       - libstdc++6
       - junit4
 
-
-script: ./gradlew $TEST_SUITE
+script: 
+  - ./gradlew $TEST_SUITE
 
 # For CodeCov
 after_success:
+  - ./gradlew jacocoTestReport
   - bash <(curl -s https://codecov.io/bash)
 
 jdk:
