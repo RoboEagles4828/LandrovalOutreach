@@ -18,5 +18,5 @@ coverage:
     changes: yes
 
 comment:
-  layout: "header, diffu, changes, sunburst, ncovered, tree"
+  layout: "header, diff, changes, sunburst, uncovered, tree"
   behavior: default
