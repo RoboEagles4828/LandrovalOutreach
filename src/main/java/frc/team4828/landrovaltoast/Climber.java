@@ -23,7 +23,7 @@ public class Climber {
         leftClimb = Registrar.victor(4); // Insert Port
     }
     public void setup() {
-        // TODO Auto-generated method stub
+        // TODO Add Setup
 
     }
 

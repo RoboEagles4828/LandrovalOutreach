@@ -9,6 +9,8 @@ import jaci.openrio.toast.lib.module.IterativeModule;
 import jaci.openrio.toast.lib.module.ModuleConfig;
 import jaci.openrio.toast.lib.registry.Registrar;
 
+import java.util.Arrays;
+
 public class RobotModule extends IterativeModule {
 
     @Override
@@ -52,6 +54,8 @@ public class RobotModule extends IterativeModule {
         blocker = Registrar.victor(config.getInt("ports.blockerMotor", 0));
         blockerHall = Registrar.digitalInput(config.getInt("ports.blockerHall", 0));
         refreshConstants();
+
+        worldChampionDrive = new Drive(1,2,3,4);
     }
 
     @Override
