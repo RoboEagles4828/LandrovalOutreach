@@ -251,28 +251,28 @@ public class Drive {
         backRight.set(wheelSpeeds[MotorType.kbackRight_val]);
     }
 
-    public void rotateToAngle(double angle, AnalogGyro gyro, Robot r) {
-        if (gyro.getAngle() % 360 > angle) {
-            while (gyro.getAngle() % 360 > angle && r.isAutonomous){
-                move(Direction.SPINLEFT, 0.5);
-                //System.out.println("Angle: " + angle + "   Gyro: " + gyro.getAngle());
-            }
-            while (gyro.getAngle() % 360 < angle && r.isAutonomous()){
-                move(Direction.SPINRIGHT, 0.5);
-                //System.out.println("Angle: " + angle + "   Gyro: " + gyro.getAngle());
-            }
-        } else if (gyro.getAngle() % 360 < angle) {
-            while (gyro.getAngle() % 360 < angle && r.isAutonomous()){
-                move(Direction.SPINRIGHT, 0.5);
-                //System.out.println("Angle: " + angle + "   Gyro: " + gyro.getAngle());
-            }
-            while (gyro.getAngle() % 360 > angle && r.isAutonomous()){
-                move(Direction.SPINLEFT, 0.5);
-                //System.out.println("Angle: " + angle + "   Gyro: " + gyro.getAngle());
-            }
-        }
-        stop();
-    }
+//    public void rotateToAngle(double angle, AnalogGyro gyro, Robot r) {
+//        if (gyro.getAngle() % 360 > angle) {
+//            while (gyro.getAngle() % 360 > angle && r.isAutonomous){
+//                move(Direction.SPINLEFT, 0.5);
+//                //System.out.println("Angle: " + angle + "   Gyro: " + gyro.getAngle());
+//            }
+//            while (gyro.getAngle() % 360 < angle && r.isAutonomous()){
+//                move(Direction.SPINRIGHT, 0.5);
+//                //System.out.println("Angle: " + angle + "   Gyro: " + gyro.getAngle());
+//            }
+//        } else if (gyro.getAngle() % 360 < angle) {
+//            while (gyro.getAngle() % 360 < angle && r.isAutonomous()){
+//                move(Direction.SPINRIGHT, 0.5);
+//                //System.out.println("Angle: " + angle + "   Gyro: " + gyro.getAngle());
+//            }
+//            while (gyro.getAngle() % 360 > angle && r.isAutonomous()){
+//                move(Direction.SPINLEFT, 0.5);
+//                //System.out.println("Angle: " + angle + "   Gyro: " + gyro.getAngle());
+//            }
+//        }
+//        stop();
+//    }
 
     public void rotateToAngle(double angle, AnalogGyro gyro) {
         if (gyro.getAngle() % 360 > angle) {
@@ -327,20 +327,20 @@ public class Drive {
     //
     private final static double PULSE_PER_INCH = 43D;
 
-    public void move(Direction direction, double speed, double inches, Robot r) {
-        int encStart = backLeft.getEncPosition();
-        if (inches <= 0)
-            System.out.println("Distance requested < 0 inches; put in a valid parameter");
-        else {
-            double encIncNeeded = PULSE_PER_INCH * inches;
-            while (backLeft.getEncPosition() < encStart + encIncNeeded
-                    && backLeft.getEncPosition() > encStart - encIncNeeded && r.isAutonomous()){
-                //System.out.println("rl: " + backLeft.getEncPosition());
-                move(direction, speed);
-            }
-            stop();
-        }
-    }
+//    public void move(Direction direction, double speed, double inches, Robot r) {
+//        int encStart = backLeft.getEncPosition();
+//        if (inches <= 0)
+//            System.out.println("Distance requested < 0 inches; put in a valid parameter");
+//        else {
+//            double encIncNeeded = PULSE_PER_INCH * inches;
+//            while (backLeft.getEncPosition() < encStart + encIncNeeded
+//                    && backLeft.getEncPosition() > encStart - encIncNeeded && r.isAutonomous()){
+//                //System.out.println("rl: " + backLeft.getEncPosition());
+//                move(direction, speed);
+//            }
+//            stop();
+//        }
+//    }
 
     public void autoHack() {
         frontLeft.set(0.7);
