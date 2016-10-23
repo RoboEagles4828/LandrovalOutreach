@@ -15,8 +15,8 @@ public class Drive {
     public CANTalon backLeft;
     public CANTalon frontRight;
     public CANTalon backRight;
-    private static ModuleConfig config = new ModuleConfig("RobotConfig.conf");
-    protected static final int KMAXNUMBEROFMOTORS = config.getInt("worldChampionDrive.kMaxNumberOfMotors", 0);
+//    private static ModuleConfig config = new ModuleConfig("RobotConfig.conf");
+//    protected static final int KMAXNUMBEROFMOTORS = config.getInt("worldChampionDrive.kMaxNumberOfMotors", 0);
     public boolean inverseControls = false;
 
 
@@ -69,20 +69,20 @@ public class Drive {
         }
     }
 
-    protected static void normalize(double wheelSpeeds[]) {
-        double maxMagnitude = Math.abs(wheelSpeeds[0]);
-        int i;
-        for (i = 1; i < KMAXNUMBEROFMOTORS; i++) {
-            double temp = Math.abs(wheelSpeeds[i]);
-            if (maxMagnitude < temp)
-                maxMagnitude = temp;
-        }
-        if (maxMagnitude > 1.0) {
-            for (i = 0; i < KMAXNUMBEROFMOTORS; i++) {
-                wheelSpeeds[i] = wheelSpeeds[i] / maxMagnitude;
-            }
-        }
-    }
+//    protected static void normalize(double wheelSpeeds[]) {
+//        double maxMagnitude = Math.abs(wheelSpeeds[0]);
+//        int i;
+//        for (i = 1; i < KMAXNUMBEROFMOTORS; i++) {
+//            double temp = Math.abs(wheelSpeeds[i]);
+//            if (maxMagnitude < temp)
+//                maxMagnitude = temp;
+//        }
+//        if (maxMagnitude > 1.0) {
+//            for (i = 0; i < KMAXNUMBEROFMOTORS; i++) {
+//                wheelSpeeds[i] = wheelSpeeds[i] / maxMagnitude;
+//            }
+//        }
+//    }
 
     public void tankDrive(GenericHID leftStick, GenericHID rightStick) {
         if (leftStick == null || rightStick == null) {
@@ -234,22 +234,22 @@ public class Drive {
         setLeftRightMotorOutputs(leftMotorSpeed, rightMotorSpeed);
     }
 
-    public void mecanumDrive_Polar(double magnitude, double direction, double rotation) {
-        magnitude = limit(magnitude) * Math.sqrt(2.0);
-        double dirInRad = (direction + 45.0) * Math.PI / 180.0;
-        double cosD = Math.cos(dirInRad);
-        double sinD = Math.sin(dirInRad);
-        double wheelSpeeds[] = new double[KMAXNUMBEROFMOTORS];
-        wheelSpeeds[MotorType.kFrontLeft_val] = (sinD * magnitude + rotation);
-        wheelSpeeds[MotorType.kFrontRight_val] = (cosD * magnitude - rotation);
-        wheelSpeeds[MotorType.kbackLeft_val] = (cosD * magnitude + rotation);
-        wheelSpeeds[MotorType.kbackRight_val] = (sinD * magnitude - rotation);
-        normalize(wheelSpeeds);
-        frontLeft.set(wheelSpeeds[MotorType.kFrontLeft_val]);
-        frontRight.set(wheelSpeeds[MotorType.kFrontRight_val]);
-        backLeft.set(wheelSpeeds[MotorType.kbackLeft_val]);
-        backRight.set(wheelSpeeds[MotorType.kbackRight_val]);
-    }
+//    public void mecanumDrive_Polar(double magnitude, double direction, double rotation) {
+//        magnitude = limit(magnitude) * Math.sqrt(2.0);
+//        double dirInRad = (direction + 45.0) * Math.PI / 180.0;
+//        double cosD = Math.cos(dirInRad);
+//        double sinD = Math.sin(dirInRad);
+//        double wheelSpeeds[] = new double[KMAXNUMBEROFMOTORS];
+//        wheelSpeeds[MotorType.kFrontLeft_val] = (sinD * magnitude + rotation);
+//        wheelSpeeds[MotorType.kFrontRight_val] = (cosD * magnitude - rotation);
+//        wheelSpeeds[MotorType.kbackLeft_val] = (cosD * magnitude + rotation);
+//        wheelSpeeds[MotorType.kbackRight_val] = (sinD * magnitude - rotation);
+//        normalize(wheelSpeeds);
+//        frontLeft.set(wheelSpeeds[MotorType.kFrontLeft_val]);
+//        frontRight.set(wheelSpeeds[MotorType.kFrontRight_val]);
+//        backLeft.set(wheelSpeeds[MotorType.kbackLeft_val]);
+//        backRight.set(wheelSpeeds[MotorType.kbackRight_val]);
+//    }
 
 //    public void rotateToAngle(double angle, AnalogGyro gyro, Robot r) {
 //        if (gyro.getAngle() % 360 > angle) {
