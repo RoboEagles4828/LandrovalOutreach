@@ -15,7 +15,11 @@ public class Drive {
     public CANTalon backLeft;
     public CANTalon frontRight;
     public CANTalon backRight;
+<<<<<<< HEAD
     private static ModuleConfig config = new ModuleConfig("run/toast/config/RobotConfig.conf");
+=======
+    private static ModuleConfig config = new ModuleConfig("RobotConfig.conf");
+>>>>>>> parent of 104990e... Remove All Configs
     protected static final int KMAXNUMBEROFMOTORS = config.getInt("worldChampionDrive.kMaxNumberOfMotors", 0);
     public boolean inverseControls = false;
 
