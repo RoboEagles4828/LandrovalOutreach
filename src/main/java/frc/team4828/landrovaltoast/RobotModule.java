@@ -45,7 +45,7 @@ public class RobotModule extends IterativeModule {
     @Override
     public void robotInit() {
         logger = new Logger("Landroval", Logger.ATTR_DEFAULT);
-        config = new ModuleConfig("run/toast/config/RobotConfig.conf");
+        config = new ModuleConfig("RobotConfig.conf");
         autonChoice = Auton.valueOf(config.getString("autonomousDefault", "TERRAIN"));
 
         //TODO: command bus (the possibilities are endless)
