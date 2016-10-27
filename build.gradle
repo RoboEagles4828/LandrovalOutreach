@@ -58,6 +58,6 @@ jacocoTestReport {
     }
 }
 
-task stage(dependsOn: ['build'])
+task stage(dependsOn: ['build', 'clean'])
 
 check.dependsOn jacocoTestReport
