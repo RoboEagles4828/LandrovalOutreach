@@ -58,4 +58,6 @@ jacocoTestReport {
     }
 }
 
+task stage(dependsOn: ['build'])
+
 check.dependsOn jacocoTestReport
