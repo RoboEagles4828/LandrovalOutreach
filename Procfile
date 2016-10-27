@@ -1,1 +1,1 @@
-web: ./gradlew verify
+web: ./gradlew build
