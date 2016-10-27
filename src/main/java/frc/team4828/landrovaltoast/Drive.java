@@ -32,6 +32,7 @@ public class Drive {
         list[1] = backLeft.getDeviceID();
         list[2] = backRight.getDeviceID();
         list[3] = frontRight.getDeviceID();
+    }
 
     public enum Direction {
         FORWARD, BACKWARD, LEFT, RIGHT, SPINLEFT, SPINRIGHT;
