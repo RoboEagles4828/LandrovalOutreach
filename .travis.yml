@@ -9,7 +9,7 @@ addons:
       - junit4
 
 script: 
-  - ./gradlew $TEST_SUITE
+  - ./gradlew $TEST_SUITE --debug
 
 # For CodeCov
 after_success:
