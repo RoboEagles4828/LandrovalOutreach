@@ -1,1 +1,1 @@
-web: ./gradlew build
+web: ./gradlew build --debug
