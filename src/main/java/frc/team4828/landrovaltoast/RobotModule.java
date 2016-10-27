@@ -55,7 +55,7 @@ public class RobotModule extends IterativeModule {
         blockerHall = Registrar.digitalInput(config.getInt("ports.blockerHall", 0));
         refreshConstants();
 
-        worldChampionDrive = new Drive(1,2,3,4);
+        //worldChampionDrive = new Drive(1,2,3,4);
     }
 
     @Override
