@@ -11,13 +11,13 @@ import static org.junit.Assert.assertArrayEquals;
 
 @RunWith(JUnit4.class)
 public class Tester {
-    @Test
-    public void testDrive() {
-        int[] expected = {1,2,3,4};
-        Drive drive = new Drive(1,2,3,4);
-        int[] info = drive.getPorts();
-        assertArrayEquals(expected, info);
-    }
+//    @Test
+//    public void testDrive() {
+//        int[] expected = {1,2,3,4};
+//        Drive drive = new Drive(1,2,3,4);
+//        int[] info = drive.getPorts();
+//        assertArrayEquals(expected, info);
+//    }
 //    @Test
 //    public void checkShooterMovement() {
 //        Shooter shoot = new Shooter(1,2,3,4,5,6);
