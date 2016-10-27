@@ -26,6 +26,12 @@ public class Drive {
         frontRight = Registrar.canTalon(fr);
         backRight = Registrar.canTalon(br);
     }
+    public int[] getPorts() {
+        int[] list = new int[4];
+        list[0] = frontLeft.getDeviceID();
+        list[1] = backLeft.getDeviceID();
+        list[2] = backRight.getDeviceID();
+        list[3] = frontRight.getDeviceID();
 
     public enum Direction {
         FORWARD, BACKWARD, LEFT, RIGHT, SPINLEFT, SPINRIGHT;
@@ -389,7 +395,6 @@ public class Drive {
         list[1] = backLeft.getDeviceID();
         list[2] = frontRight.getDeviceID();
         list[3] = backRight.getDeviceID();
-
         return list;
     }
 }
